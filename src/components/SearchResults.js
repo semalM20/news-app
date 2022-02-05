@@ -54,7 +54,7 @@ const SearchResults = (props) => {
         <div className="row">
           {news.map((newsEl) => {
             return (
-              <div className="col-md-4 mb-4" key={newsEl._id}>
+              <div className="col-md-6 col-lg-4 mb-4" key={newsEl._id}>
                 <NewsItem
                   title={newsEl.title}
                   desc={newsEl.excerpt}

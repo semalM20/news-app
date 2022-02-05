@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = (props) => {
   const [searchText, setSearchText] = useState("");
@@ -12,6 +12,9 @@ const Navbar = (props) => {
     props.searchT(searchText);
     setSearchText("");
   };
+
+  let location = useLocation();
+  let path = location.pathname;
 
   return (
     <nav
@@ -36,27 +39,45 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link
+                className={`nav-link ${path === "/" ? "active" : ""} `}
+                aria-current="page"
+                to="/"
+              >
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/entertainment">
+              <Link
+                className={`nav-link ${
+                  path === "/entertainment" ? "active" : ""
+                } `}
+                to="/entertainment"
+              >
                 Entertainment
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/finance">
+              <Link
+                className={`nav-link ${path === "/finance" ? "active" : ""} `}
+                to="/finance"
+              >
                 Finance
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/tech">
+              <Link
+                className={`nav-link ${path === "/tech" ? "active" : ""} `}
+                to="/tech"
+              >
                 Technology
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/sports">
+              <Link
+                className={`nav-link ${path === "/sports" ? "active" : ""} `}
+                to="/sports"
+              >
                 Sports
               </Link>
             </li>

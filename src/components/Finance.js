@@ -39,12 +39,12 @@ const Finance = () => {
 
   return (
     <>
-      <h1 className="display-5 text-center mt-4">Latest News</h1>
+      <h1 className="display-5 text-center mt-4">Finance News</h1>
       <div className="container mt-4">
         <div className="row">
           {news.map((newsEl) => {
             return (
-              <div className="col-md-4 mb-4" key={newsEl._id}>
+              <div className="col-md-6 col-lg-4 mb-4" key={newsEl._id}>
                 <NewsItem
                   title={newsEl.title}
                   desc={newsEl.excerpt}
