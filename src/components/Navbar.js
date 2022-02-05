@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
+  const [searchText, setSearchText] = useState("");
+
+  const inputChangeHandler = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const search = () => {
+    props.searchT(searchText);
+    setSearchText("");
+  };
+
   return (
     <nav
       className={`navbar navbar-expand-lg 
-      ${props.dark == true ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}
+      ${props.dark === true ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}
     >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
@@ -30,23 +41,46 @@ const Navbar = (props) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About
+              <Link className="nav-link" to="/entertainment">
+                Entertainment
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/finance">
+                Finance
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/tech">
+                Technology
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/sports">
+                Sports
               </Link>
             </li>
           </ul>
-          {props.search == true && (
-            <form className="d-flex">
+          {props.search === true && (
+            <div className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
+                id="searchBar"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={inputChangeHandler}
+                value={searchText}
               />
-              <button className="btn btn-outline-success" type="submit">
+              <Link
+                className="btn btn-outline-success"
+                type="submit"
+                to="/search"
+                onClick={search}
+              >
                 Search
-              </button>
-            </form>
+              </Link>
+            </div>
           )}
         </div>
       </div>
