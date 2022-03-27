@@ -23,7 +23,7 @@ const NewsItem = (props) => {
         </h6>
         <p className="card-text">{props.desc}</p>
         <div className="text-center">
-          <a href={props.newsLink} className="btn btn-primary">
+          <a href={props.newsLink} target="_blank" className="btn btn-primary">
             Visit News
           </a>
         </div>

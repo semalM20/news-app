@@ -10,7 +10,8 @@ const Tech = () => {
       let response = await fetch(url, {
         method: "GET",
         headers: {
-          "x-api-key": "T6fTYpR1e4MtyzkqRCvOfoPy4cbgX0YPCho5VIMyHKs",
+          // "x-api-key": "T6fTYpR1e4MtyzkqRCvOfoPy4cbgX0YPCho5VIMyHKs",
+          "x-api-key": "process.env.REACT_APP_NEWS_API_KEY",
         },
       });
       if (!response.ok) {

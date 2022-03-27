@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import SearchContext from "../context/SearchContext";
 
 const Navbar = (props) => {
+  const SearchData = useContext(SearchContext);
+
   const [searchText, setSearchText] = useState("");
 
   const inputChangeHandler = (e) => {
@@ -9,12 +12,12 @@ const Navbar = (props) => {
   };
 
   const search = () => {
-    props.searchT(searchText);
+    SearchData.setSearchText(searchText);
     setSearchText("");
   };
 
-  let location = useLocation();
-  let path = location.pathname;
+  // let location = useLocation();
+  // let path = location.pathname;
 
   return (
     <nav
@@ -39,47 +42,29 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link
-                className={`nav-link ${path === "/" ? "active" : ""} `}
-                aria-current="page"
-                to="/"
-              >
+              <NavLink className="nav-link" aria-current="page" to="/">
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  path === "/entertainment" ? "active" : ""
-                } `}
-                to="/entertainment"
-              >
+              <NavLink className="nav-link" to="/entertainment">
                 Entertainment
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
-                className={`nav-link ${path === "/finance" ? "active" : ""} `}
-                to="/finance"
-              >
+              <NavLink className="nav-link" to="/finance">
                 Finance
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
-                className={`nav-link ${path === "/tech" ? "active" : ""} `}
-                to="/tech"
-              >
+              <NavLink className="nav-link" to="/tech">
                 Technology
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
-                className={`nav-link ${path === "/sports" ? "active" : ""} `}
-                to="/sports"
-              >
+              <NavLink className="nav-link" to="/sports">
                 Sports
-              </Link>
+              </NavLink>
             </li>
           </ul>
           {props.search === true && (

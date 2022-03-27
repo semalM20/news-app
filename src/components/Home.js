@@ -11,10 +11,12 @@ const Home = () => {
   useEffect(() => {
     async function getData() {
       let url = `https://api.newscatcherapi.com/v2/latest_headlines?countries=IN&page_size=18&lang=en&when=24h&page=${pageNo}`;
+
       let response = await fetch(url, {
         method: "GET",
         headers: {
-          "x-api-key": "T6fTYpR1e4MtyzkqRCvOfoPy4cbgX0YPCho5VIMyHKs",
+          // "x-api-key": "T6fTYpR1e4MtyzkqRCvOfoPy4cbgX0YPCho5VIMyHKs",
+          "x-api-key": process.env.REACT_APP_NEWS_API_KEY,
         },
       });
       if (!response.ok) {
@@ -23,9 +25,10 @@ const Home = () => {
       let data = await response.json();
       setNews(news.concat(data.articles));
       setTotalNews(data.total_hits);
-      console.log(data);
+      // console.log(data);
     }
     getData();
+    // eslint-disable-next-line
   }, [pageNo]);
 
   if (news.length === 0) {
